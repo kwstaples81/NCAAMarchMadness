@@ -1,0 +1,160 @@
+#Attempt at MarchMadnessScript
+library(xlsx)
+setwd("##filepath##")
+#load key and players
+Key<-read.xlsx("##filename##.xlsx",sheetName="Sheet1");
+Player1<-read.xlsx("##filename##.xlsx",sheetName="Sheet1"); 
+Player2<-read.xlsx("##filename##.xlsx",sheetName="Sheet1"); 
+Player3<-read.xlsx("##filename##.xlsx",sheetName="Sheet1"); 
+Player4<-read.xlsx("##filename##.xlsx",sheetName="Sheet1");
+Player5<-read.xlsx("##filename##.xlsx",sheetName="Sheet1");
+Player6<-read.xlsx("##filename##.xlsx",sheetName="Sheet1");
+
+#Fibonacci scoring
+Scoring<-c(1,2,3,5,8,13)
+Possible.Score<-c(); Player1.Score<-c(); Player2.Score<-c();
+  Player3.Score<-c();Player4.Score<-c();Player5.Score<-c();Player6.Score<-c();
+              
+#Grading picks
+#Round of 64
+for (i in 1:32){
+  Key$Key[i]<-pmatch(Key$Pick[i],Key$Pick[i],0,0)
+  Key$Player1[i]<-pmatch(Player1$Pick[i],Key$Pick[i],0,0)
+  Key$Player2[i]<-pmatch(Player2$Pick[i],Key$Pick[i],0,0)
+  Key$Player3[i]<-pmatch(Player3$Pick[i],Key$Pick[i],0,0)
+  Key$Player4[i]<-pmatch(Player4$Pick[i],Key$Pick[i],0,0)
+  Key$Player5[i]<-pmatch(Player5$Pick[i],Key$Pick[i],0,0)
+  Key$Player6[i]<-pmatch(Player6$Pick[i],Key$Pick[i],0,0)
+}
+Possible.Score[1]<-sum(Key$Key[1:32])*Scoring[1]
+Player1.Score[1]<-sum(Key$Player1[1:32])*Scoring[1]
+Player2.Score[1]<-sum(Key$Player2[1:32])*Scoring[1]
+Player3.Score[1]<-sum(Key$Player3[1:32])*Scoring[1]
+Player4.Score[1]<-sum(Key$Player4[1:32])*Scoring[1]
+Player5.Score[1]<-sum(Key$Player5[1:32])*Scoring[1]
+Player6.Score[1]<-sum(Key$Player6[1:32])*Scoring[1]
+
+Round<-c(1)
+Score<-as.data.frame(cbind(Round,Possible.Score,Player1.Score,
+  Player2.Score,Player3.Score,Player4.Score,Player5.Score,Player6.Score))
+names(Score)<-c("#name#,#name#,#name#,#name#,#name#,#name#,#name#)
+  
+#Round of 32
+for (i in 33:48){
+  Key$Key[i]<-pmatch(Key$Pick[i],Key$Pick[i],0,0)
+  Key$Player1[i]<-pmatch(Player1$Pick[i],Key$Pick[i],0,0)
+  Key$Player2[i]<-pmatch(Player2$Pick[i],Key$Pick[i],0,0)
+  Key$Player3[i]<-pmatch(Player3$Pick[i],Key$Pick[i],0,0)
+  Key$Player4[i]<-pmatch(Player4$Pick[i],Key$Pick[i],0,0)
+  Key$Player5[i]<-pmatch(Player5$Pick[i],Key$Pick[i],0,0)
+  Key$Player6[i]<-pmatch(Player6$Pick[i],Key$Pick[i],0,0)
+}
+Possible.Score[2]<-sum(Key$Key[33:48])*Scoring[2]
+Player1.Score[2]<-sum(Key$Player1[33:48])*Scoring[2]
+Player2.Score[2]<-sum(Key$Player2[33:48])*Scoring[2]
+Player3.Score[2]<-sum(Key$Player3[33:48])*Scoring[2]
+Player4.Score[2]<-sum(Key$Player4[33:48])*Scoring[2]
+Player5.Score[2]<-sum(Key$Player5[33:48])*Scoring[2]
+Player6.Score[2]<-sum(Key$Player6[33:48])*Scoring[2]
+
+Round<-c(1,2)
+Score<-as.data.frame(cbind(Round,Possible.Score,Player1.Score,
+  Player2.Score,Player3.Score,Player4.Score,Player5.Score,Player6.Score))
+Score[3,ncol(Score)]<-colSums(Score[,2:ncol(Score)])
+names(Score)<-c("#name#,#name#,#name#,#name#,#name#,#name#,#name#)
+
+#Sweet Sixteen
+for (i in 49:56){
+  Key$Key[i]<-pmatch(Key$Pick[i],Key$Pick[i],0,0)
+  Key$Player1[i]<-pmatch(Player1$Pick[i],Key$Pick[i],0,0)
+  Key$Player2[i]<-pmatch(Player2$Pick[i],Key$Pick[i],0,0)
+  Key$Player3[i]<-pmatch(Player3$Pick[i],Key$Pick[i],0,0)
+  Key$Player4[i]<-pmatch(Player4$Pick[i],Key$Pick[i],0,0)
+  Key$Player5[i]<-pmatch(Player5$Pick[i],Key$Pick[i],0,0)
+  Key$Player6[i]<-pmatch(Player6$Pick[i],Key$Pick[i],0,0)
+}
+Possible.Score[3]<-sum(Key$Key[49:56])*Scoring[3]
+Player1.Score[3]<-sum(Key$Player1[49:56])*Scoring[3]
+Player2.Score[3]<-sum(Key$Player2[49:56])*Scoring[3]
+Player3.Score[3]<-sum(Key$Player3[49:56])*Scoring[3]
+Player4.Score[3]<-sum(Key$Player4[49:56])*Scoring[3]
+Player5.Score[3]<-sum(Key$Player5[49:56])*Scoring[3]
+Player6.Score[3]<-sum(Key$Player6[49:56])*Scoring[3]
+
+Round<-c(1,2,3)
+Score<-as.data.frame(cbind(Round,Possible.Score,Player1.Score,
+  Player2.Score,Player3.Score,Player4.Score,Player5.Score,Player6.Score))
+Score[4,2:ncol(Score)]<-colSums(Score[,2:ncol(Score)])
+names(Score)<-c("#name#,#name#,#name#,#name#,#name#,#name#,#name#)
+
+#Elite Eight
+for (i in 57:60){
+  Key$Key[i]<-pmatch(Key$Pick[i],Key$Pick[i],0,0)
+  Key$Player1[i]<-pmatch(Player1$Pick[i],Key$Pick[i],0,0)
+  Key$Player2[i]<-pmatch(Player2$Pick[i],Key$Pick[i],0,0)
+  Key$Player3[i]<-pmatch(Player3$Pick[i],Key$Pick[i],0,0)
+  Key$Player4[i]<-pmatch(Player4$Pick[i],Key$Pick[i],0,0)
+  Key$Player5[i]<-pmatch(Player5$Pick[i],Key$Pick[i],0,0)
+  Key$Player6[i]<-pmatch(Player6$Pick[i],Key$Pick[i],0,0)
+}
+Possible.Score[3]<-sum(Key$Key[57:60])*Scoring[3]
+Player1.Score[3]<-sum(Key$Player1[57:60])*Scoring[3]
+Player2.Score[3]<-sum(Key$Player2[57:60])*Scoring[3]
+Player3.Score[3]<-sum(Key$Player3[57:60])*Scoring[3]
+Player4.Score[3]<-sum(Key$Player4[57:60])*Scoring[3]
+Player5.Score[3]<-sum(Key$Player5[57:60])*Scoring[3]
+Player6.Score[3]<-sum(Key$Player6[57:60])*Scoring[3]
+
+Round<-c(1,2,3)
+Score<-as.data.frame(cbind(Round,Possible.Score,Player1.Score,
+  Player2.Score,Player3.Score,Player4.Score,Player5.Score,Player6.Score))
+Score[4,2:ncol(Score)]<-colSums(Score[,2:ncol(Score)])
+names(Score)<-c("#name#,#name#,#name#,#name#,#name#,#name#,#name#)
+
+#Final Four
+for (i in 61:62){
+  Key$Key[i]<-pmatch(Key$Pick[i],Key$Pick[i],0,0)
+  Key$Player1[i]<-pmatch(Player1$Pick[i],Key$Pick[i],0,0)
+  Key$Player2[i]<-pmatch(Player2$Pick[i],Key$Pick[i],0,0)
+  Key$Player3[i]<-pmatch(Player3$Pick[i],Key$Pick[i],0,0)
+  Key$Player4[i]<-pmatch(Player4$Pick[i],Key$Pick[i],0,0)
+  Key$Player5[i]<-pmatch(Player5$Pick[i],Key$Pick[i],0,0)
+  Key$Player6[i]<-pmatch(Player6$Pick[i],Key$Pick[i],0,0)
+}
+Possible.Score[4]<-sum(Key$Key[61:62])*Scoring[4]
+Player1.Score[4]<-sum(Key$Player1[61:62])*Scoring[4]
+Player2.Score[4]<-sum(Key$Player2[61:62])*Scoring[4]
+Player3.Score[4]<-sum(Key$Player3[61:62])*Scoring[4]
+Player4.Score[4]<-sum(Key$Player4[61:62])*Scoring[4]
+Player5.Score[4]<-sum(Key$Player5[61:62])*Scoring[4]
+Player6.Score[4]<-sum(Key$Player6[61:62])*Scoring[4]
+
+Round<-c(1,2,3,4)
+Score<-as.data.frame(cbind(Round,Possible.Score,Player1.Score,
+  Player2.Score,Player3.Score,Player4.Score,Player5.Score,Player6.Score))
+Score[5,2:ncol(Score)]<-colSums(Score[,2:ncol(Score)])
+names(Score)<-c("#name#,#name#,#name#,#name#,#name#,#name#,#name#)
+
+#Championship Game
+for (i in 63){
+  Key$Key[i]<-pmatch(Key$Pick[i],Key$Pick[i],0,0)
+  Key$Player1[i]<-pmatch(Player1$Pick[i],Key$Pick[i],0,0)
+  Key$Player2[i]<-pmatch(Player2$Pick[i],Key$Pick[i],0,0)
+  Key$Player3[i]<-pmatch(Player3$Pick[i],Key$Pick[i],0,0)
+  Key$Player4[i]<-pmatch(Player4$Pick[i],Key$Pick[i],0,0)
+  Key$Player5[i]<-pmatch(Player5$Pick[i],Key$Pick[i],0,0)
+  Key$Player6[i]<-pmatch(Player6$Pick[i],Key$Pick[i],0,0)
+}
+Possible.Score[5]<-sum(Key$Key[63])*Scoring[5]
+Player1.Score[5]<-sum(Key$Player1[63])*Scoring[5]
+Player2.Score[5]<-sum(Key$Player2[63])*Scoring[5]
+Player3.Score[5]<-sum(Key$Player3[63])*Scoring[5]
+Player4.Score[5]<-sum(Key$Player4[63])*Scoring[5]
+Player5.Score[5]<-sum(Key$Player5[63])*Scoring[5]
+Player6.Score[5]<-sum(Key$Player6[63])*Scoring[5]
+
+Round<-c(1,2,3,4,5)
+Score<-as.data.frame(cbind(Round,Possible.Score,Player1.Score,
+  Player2.Score,Player3.Score,Player4.Score,Player5.Score,Player6.Score))
+Score[6,2:ncol(Score)]<-colSums(Score[,2:ncol(Score)])
+names(Score)<-c("#name#,#name#,#name#,#name#,#name#,#name#,#name#)
