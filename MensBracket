@@ -101,9 +101,9 @@ Possible.Score[3]<-sum(Key$Key[53:60])*Scoring[3]
 Player1.Score[3]<-sum(Key$Player1[53:60])*Scoring[3]
 Player2.Score[3]<-sum(Key$Player2[53:60])*Scoring[3]
 Player3.Score[3]<-sum(Key$Player3[53:60])*Scoring[3]
-Player4.Score[3]<-sum(Key$Player4[37:52])*Scoring[3]
-Player5.Score[3]<-sum(Key$Player5[37:52])*Scoring[3]
-Player6.Score[3]<-sum(Key$Player6[37:52])*Scoring[3]
+Player4.Score[3]<-sum(Key$Player4[53:60])*Scoring[3]
+Player5.Score[3]<-sum(Key$Player5[53:60])*Scoring[3]
+Player6.Score[3]<-sum(Key$Player6[53:60])*Scoring[3]
 
 Round<-c(1,2,3)
 Score<-as.data.frame(cbind(Round,Possible.Score,Player1.Score,
